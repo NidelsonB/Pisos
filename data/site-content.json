@@ -1,0 +1,155 @@
+{
+  "business": {
+    "topStripText": "Mas de 30 anos sirviendo a nuestros clientes.",
+    "topStripLinkLabel": "Compra aqui",
+    "headerButtonLabel": "Tel. 2228-1163",
+    "footerDescription": "Distribuidores e importadores directos de pisos, ceramica, azulejos, porcelanato y fachaletas para proyectos residenciales y comerciales en El Salvador.",
+    "phone": "+503 2228-1163",
+    "secondaryPhone": "+503 7853-0998",
+    "whatsappUrl": "https://wa.me/message/UGVGEEI6U62LD1",
+    "email": "cotizador@pisoslasdelicias.com",
+    "address": "4a calle poniente y 18 avenida sur # 2-14, Santa Tecla, La Libertad, frente a Estadio Las Delicias",
+    "mapUrl": "https://www.google.com/maps/place/Pisos+Las+Delicias/@13.6725899,-89.298318,15z/data=!4m6!3m5!1s0x8f632fd501eaca0b:0x122f08b04e42e5ff!8m2!3d13.6725899!4d-89.298318!16s%2Fg%2F11ss4l2gxl?entry=ttu"
+  },
+  "home": {
+    "heroPromos": [
+      {
+        "id": "promo-pisos",
+        "eyebrow": "PISOS",
+        "title": "¿Piso nuevo?\n¡Encuentralo aqui!",
+        "description": "",
+        "image": "/uploads/2024/03/backdrop-pisos.jpg",
+        "href": "https://wa.me/message/UGVGEEI6U62LD1",
+        "buttonLabel": "Contactanos"
+      },
+      {
+        "id": "promo-azulejos",
+        "eyebrow": "AZULEJOS",
+        "title": "Mejora tu cocina\ncon nuestros productos",
+        "description": "Garantia del fabricante",
+        "image": "/uploads/2018/09/hero_heating_02.jpg",
+        "href": "/productos",
+        "buttonLabel": "VER CATALOGO"
+      },
+      {
+        "id": "promo-cotiza",
+        "eyebrow": "COTIZA EN LINEA",
+        "title": "¿Necesitas ayuda?\nCotiza en linea hoy",
+        "description": "Obten un precio en minutos.",
+        "image": "/uploads/2018/09/hero_heating_03.jpg",
+        "href": "https://wa.me/message/UGVGEEI6U62LD1",
+        "buttonLabel": "COTIZAR EN LINEA"
+      }
+    ],
+    "categoryCards": [
+      {
+        "id": "cat-azulejos",
+        "eyebrow": "Mas sobre nuestros",
+        "title": "Azulejos",
+        "image": "/uploads/2022/11/AZULEJOS-min.jpeg",
+        "href": "/productos?categoria=Azulejos"
+      },
+      {
+        "id": "cat-ceramicas",
+        "eyebrow": "Mas sobre nuestros",
+        "title": "Ceramicas",
+        "image": "/uploads/2022/11/ceramica-min.jpeg",
+        "href": "/productos?categoria=Ceramicas"
+      },
+      {
+        "id": "cat-duelas",
+        "eyebrow": "Mas sobre nuestros",
+        "title": "Duelas",
+        "image": "/uploads/2022/11/DUELAS-min.jpeg",
+        "href": "/productos?categoria=Duelas"
+      },
+      {
+        "id": "cat-fachaletas",
+        "eyebrow": "Mas sobre nuestros",
+        "title": "Fachaletas",
+        "image": "/uploads/2022/11/FACHALETAS-min.jpeg",
+        "href": "/productos?categoria=Fachaletas"
+      },
+      {
+        "id": "cat-porcelanato",
+        "eyebrow": "Mas sobre nuestros",
+        "title": "Porcelanato",
+        "image": "/uploads/2022/11/porcelanato-min.jpg",
+        "href": "/productos?categoria=Porcelanato"
+      },
+      {
+        "id": "cat-uniblock",
+        "eyebrow": "Mas sobre nuestros",
+        "title": "UNIBLOCK",
+        "image": "/uploads/2022/12/reparacion-de-superficies-uniblok.png",
+        "href": "/productos"
+      }
+    ],
+    "introTitle": "NUESTROS PRODUCTOS",
+    "introDescription": "Somos distribuidores e importadores directos de pisos y ceramica de calidad.",
+    "storyEyebrow": "Nuestra historia",
+    "storyTitle": "Sirviendo durante mas de 30 anos a nuestros clientes",
+    "storySubtitle": "Con esmero, transparencia y buenos precios.",
+    "storyParagraphs": [
+      "A lo largo de estas decadas en Pisos Las Delicias hemos brindado un buen servicio, asesoria en el proceso de escoger el producto para su necesidad y calidad a buenos precios.",
+      "Nos complace abrir este espacio en Internet para acercarle a usted nuestro catalogo actualizado y disponible."
+    ],
+    "storyGalleryImages": [
+      "/uploads/2022/12/IMG_9659-min.jpeg",
+      "/uploads/2022/12/IMG_8179-min.jpeg",
+      "/uploads/2022/12/referencia-06-abril-min.jpeg"
+    ],
+    "socialHeading": "SIGUENOS EN"
+  },
+  "cta": {
+    "eyebrow": "COTIZA EN LINEA",
+    "title": "Dudas sobre que necesitas?",
+    "description": "Siempre tendra en nuestra empresa una opcion seria para considerar en sus proyectos de construccion o remodelacion.",
+    "primaryLabel": "COTIZA EN LINEA YA",
+    "primaryHref": "https://wa.me/message/UGVGEEI6U62LD1",
+    "secondaryLabel": "Ver contacto",
+    "secondaryHref": "/contacto"
+  },
+  "about": {
+    "heroEyebrow": "Quienes somos",
+    "heroTitle": "Somos distribuidores e importadores directos de pisos y ceramica de calidad.",
+    "heroImage": "/uploads/2022/12/referencia-lunes-31-enero-min.jpeg",
+    "storyTitle": "Durante mas de 30 anos hemos servido a nuestros clientes con esmero, transparencia y buenos precios.",
+    "storySubtitle": "Nuestra historia",
+    "storyParagraphs": [
+      "Pisos Las Delicias nace para poner a su disposicion productos de calidad a un precio razonable. Durante estas decadas hemos servido a la comunidad en Santa Tecla como proveedores de pisos y otros productos de cemento.",
+      "En la busqueda de servirle mejor, hemos establecido alianzas comerciales con marcas prestigiosas y productos con altos estandares de calidad para ofrecerle una gama amplia de opciones."
+    ],
+    "storyImage": "/uploads/2022/12/IMG_8176-min-640x1280.jpeg",
+    "valuesEyebrow": "Nuestros valores",
+    "valuesTitle": "Somos tus aliados en tu decision.",
+    "values": [
+      {
+        "id": "value-opciones",
+        "title": "Amplia gama de opciones",
+        "description": "Le proveemos pisos clasicos, rusticos, para bano, terraza, cocina y mucho mas."
+      },
+      {
+        "id": "value-equipo",
+        "title": "Personal capacitado",
+        "description": "Nuestro equipo esta preparado para asesorarle en la adquisicion del producto ideal."
+      },
+      {
+        "id": "value-presupuesto",
+        "title": "Cuidamos su presupuesto",
+        "description": "Ponemos a su disposicion productos de calidad a un precio razonable."
+      }
+    ]
+  },
+  "contact": {
+    "heroEyebrow": "Contacto",
+    "heroTitle": "Contactenos para su proxima remodelacion.",
+    "heroImage": "/uploads/2022/12/IMG_6536-min.jpeg",
+    "introEyebrow": "Atencion comercial",
+    "introTitle": "Siempre sera un honor atenderle.",
+    "introDescription": "Estamos listos para ayudarle con precios, ubicacion, inventario disponible y asesoria para sus proyectos en Santa Tecla y todo El Salvador."
+  },
+  "footer": {
+    "copyright": "Pisos Las Delicias, 2026. Todos los derechos reservados."
+  }
+}
