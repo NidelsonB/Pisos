@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { Lang } from "@/components/LanguageToggle";
 import { getSiteContent } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -25,38 +26,70 @@ export default async function ContactPage() {
           sizes="100vw"
         />
         <div className="container page-hero__content">
-          <p className="eyebrow">{content.contact.heroEyebrow}</p>
-          <h1>{content.contact.heroTitle}</h1>
+          <p className="eyebrow">
+            <Lang es={content.contact.heroEyebrow} en="Contact" />
+          </p>
+          <h1>
+            <Lang
+              es={content.contact.heroTitle}
+              en="Contact us for your next remodeling project."
+            />
+          </h1>
         </div>
       </section>
 
       <section className="container page-shell">
         <section className="page-heading">
-          <p className="eyebrow">{content.contact.introEyebrow}</p>
-          <h1>{content.contact.introTitle}</h1>
-          <p>{content.contact.introDescription}</p>
+          <p className="eyebrow">
+            <Lang es={content.contact.introEyebrow} en="Commercial support" />
+          </p>
+          <h1>
+            <Lang es={content.contact.introTitle} en="It will be our pleasure to help you." />
+          </h1>
+          <p>
+            <Lang
+              es={content.contact.introDescription}
+              en="We are ready to help with pricing, location, available inventory and guidance for projects in Santa Tecla and across El Salvador."
+            />
+          </p>
         </section>
 
         <div className="contact-grid">
           <article className="contact-card">
-            <strong>Ubicacion</strong>
+            <strong>
+              <Lang es="Ubicacion" en="Location" />
+            </strong>
             <p>{content.business.address}</p>
             <a href={content.business.mapUrl} target="_blank" rel="noreferrer">
-              Ver en Google Maps
+              <Lang es="Ver en Google Maps" en="View on Google Maps" />
             </a>
           </article>
 
           <article className="contact-card">
-            <strong>WhatsApp y telefono</strong>
-            <p>Atencion rapida para precios, stock, medidas y opciones recomendadas.</p>
+            <strong>
+              <Lang es="WhatsApp y telefono" en="WhatsApp and phone" />
+            </strong>
+            <p>
+              <Lang
+                es="Atencion rapida para precios, stock, medidas y opciones recomendadas."
+                en="Fast support for prices, stock, sizes and recommended options."
+              />
+            </p>
             <a href={content.business.whatsappUrl} target="_blank" rel="noreferrer">
               {content.business.phone} / {content.business.secondaryPhone}
             </a>
           </article>
 
           <article className="contact-card">
-            <strong>Correo</strong>
-            <p>Solicitudes de cotizacion y seguimiento comercial.</p>
+            <strong>
+              <Lang es="Correo" en="Email" />
+            </strong>
+            <p>
+              <Lang
+                es="Solicitudes de cotizacion y seguimiento comercial."
+                en="Quote requests and commercial follow-up."
+              />
+            </p>
             <a href={`mailto:${content.business.email}`}>{content.business.email}</a>
           </article>
         </div>

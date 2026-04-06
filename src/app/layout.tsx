@@ -3,6 +3,7 @@ import { Montserrat, Roboto } from "next/font/google";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { LanguageProvider } from "@/components/LanguageToggle";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { siteConfig } from "@/lib/site";
 
@@ -67,10 +68,12 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${headingFont.variable} ${bodyFont.variable}`}>
       <body>
-        <Header />
-        {children}
-        <Footer />
-        <WhatsAppButton />
+        <LanguageProvider>
+          <Header />
+          {children}
+          <Footer />
+          <WhatsAppButton />
+        </LanguageProvider>
       </body>
     </html>
   );

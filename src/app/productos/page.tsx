@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Lang } from "@/components/LanguageToggle";
 import { ProductCard } from "@/components/ProductCard";
 import { getProducts } from "@/lib/products";
 
@@ -16,7 +17,7 @@ export async function generateMetadata({ searchParams }: ProductsPageProps): Pro
     return {
       title: "Productos",
       description:
-        "Explora nuestro catálogo de pisos, azulejos, cerámicas, fachaletas, porcelanato y duelas en Santa Tecla, La Libertad y todo El Salvador.",
+        "Explora nuestro catalogo de pisos, azulejos, ceramicas, fachaletas, porcelanato y duelas en Santa Tecla, La Libertad y todo El Salvador.",
       alternates: {
         canonical: "/productos"
       }
@@ -25,7 +26,7 @@ export async function generateMetadata({ searchParams }: ProductsPageProps): Pro
 
   return {
     title: `${selectedCategory} en El Salvador`,
-    description: `Cotiza ${selectedCategory.toLowerCase()} en El Salvador con Pisos Las Delicias. Inventario, precios y asesoría rápida desde Santa Tecla.`,
+    description: `Cotiza ${selectedCategory.toLowerCase()} en El Salvador con Pisos Las Delicias. Inventario, precios y asesoria rapida desde Santa Tecla.`,
     alternates: {
       canonical: `/productos?categoria=${encodeURIComponent(selectedCategory)}`
     }
@@ -47,17 +48,29 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   return (
     <main className="container page-shell">
       <section className="page-heading">
-        <p className="eyebrow">Productos</p>
-        <h1>Pisos y azulejos para todos sus ambientes.</h1>
+        <p className="eyebrow">
+          <Lang es="Productos" en="Products" />
+        </p>
+        <h1>
+          <Lang
+            es="Pisos y azulejos para todos sus ambientes."
+            en="Flooring and tile for every environment."
+          />
+        </h1>
         <p>
-          Mostrando {filteredProducts.length} producto{filteredProducts.length === 1 ? "" : "s"}
-          {selectedCategory ? ` en ${selectedCategory}` : " disponibles"}.
+          <Lang es="Mostrando" en="Showing" /> {filteredProducts.length}{" "}
+          <Lang
+            es={`producto${filteredProducts.length === 1 ? "" : "s"}`}
+            en={`product${filteredProducts.length === 1 ? "" : "s"}`}
+          />
+          {selectedCategory ? ` ${selectedCategory}` : ""}
+          {!selectedCategory ? <Lang es=" disponibles" en=" available" /> : null}.
         </p>
       </section>
 
       <div className="filter-row">
         <Link className={!selectedCategory ? "filter-pill is-active" : "filter-pill"} href="/productos">
-          Ver todos
+          <Lang es="Ver todos" en="View all" />
         </Link>
         {categories.map((category) => (
           <Link

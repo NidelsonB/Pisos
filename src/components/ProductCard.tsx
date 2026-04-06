@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Lang } from "@/components/LanguageToggle";
 import { Product } from "@/lib/types";
 
 type ProductCardProps = {
@@ -22,11 +23,13 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="product-card__meta">
           <span>{product.brand}</span>
           <span>{product.size}</span>
-          <span>${product.price.toFixed(2)}/caja</span>
+          <span>
+            ${product.price.toFixed(2)}/<Lang es="caja" en="box" />
+          </span>
         </div>
 
         <Link className="button button--secondary" href={`/productos/${product.slug}`}>
-          Ver detalle
+          <Lang es="Ver detalle" en="View details" />
         </Link>
       </div>
     </article>

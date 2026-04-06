@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Lang } from "@/components/LanguageToggle";
 import { getSiteContent } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -26,8 +27,15 @@ export default async function AboutPage() {
           sizes="100vw"
         />
         <div className="container page-hero__content">
-          <p className="eyebrow">{content.about.heroEyebrow}</p>
-          <h1>{content.about.heroTitle}</h1>
+          <p className="eyebrow">
+            <Lang es={content.about.heroEyebrow} en="About us" />
+          </p>
+          <h1>
+            <Lang
+              es={content.about.heroTitle}
+              en="We are direct distributors and importers of quality flooring and ceramic tile."
+            />
+          </h1>
         </div>
       </section>
 
@@ -41,18 +49,38 @@ export default async function AboutPage() {
           />
         </div>
         <div className="story-band__content">
-          <p className="eyebrow">{content.about.storySubtitle}</p>
-          <h2>{content.about.storyTitle}</h2>
-          {content.about.storyParagraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          <p className="eyebrow">
+            <Lang es={content.about.storySubtitle} en="Our story" />
+          </p>
+          <h2>
+            <Lang
+              es={content.about.storyTitle}
+              en="For more than 30 years, we have served customers with care, transparency and fair prices."
+            />
+          </h2>
+          <p>
+            <Lang
+              es="Pisos Las Delicias nace para poner a su disposicion productos de calidad a un precio razonable."
+              en="Pisos Las Delicias was created to offer quality products at reasonable prices."
+            />
+          </p>
+          <p>
+            <Lang
+              es="Hemos establecido alianzas comerciales con marcas prestigiosas para ofrecer una amplia gama de opciones."
+              en="We have built partnerships with trusted brands to offer a broad range of options."
+            />
+          </p>
         </div>
       </section>
 
       <section className="container section info-band">
         <div>
-          <p className="eyebrow">{content.about.valuesEyebrow}</p>
-          <h2>{content.about.valuesTitle}</h2>
+          <p className="eyebrow">
+            <Lang es={content.about.valuesEyebrow} en="Our values" />
+          </p>
+          <h2>
+            <Lang es={content.about.valuesTitle} en="We are your allies in every decision." />
+          </h2>
         </div>
         <div className="info-band__grid">
           {content.about.values.map((value) => (
@@ -67,16 +95,25 @@ export default async function AboutPage() {
       <section className="section section--dark">
         <div className="container cta-panel">
           <div>
-            <p className="eyebrow">Cotizacion rapida</p>
-            <h2>Hablemos de su proyecto.</h2>
-            <p>Atencion directa para pisos, azulejos, fachaletas, duelas y porcelanato.</p>
+            <p className="eyebrow">
+              <Lang es="Cotizacion rapida" en="Fast quotes" />
+            </p>
+            <h2>
+              <Lang es="Hablemos de su proyecto." en="Let us talk about your project." />
+            </h2>
+            <p>
+              <Lang
+                es="Atencion directa para pisos, azulejos, fachaletas, duelas y porcelanato."
+                en="Direct service for flooring, wall tile, veneers, planks and porcelain tile."
+              />
+            </p>
           </div>
           <div className="cta-panel__actions">
             <Link className="button button--primary" href="/productos">
-              Ver productos
+              <Lang es="Ver productos" en="View products" />
             </Link>
             <Link className="button button--ghost-light" href="/contacto">
-              Contacto
+              <Lang es="Contacto" en="Contact" />
             </Link>
           </div>
         </div>

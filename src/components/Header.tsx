@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Lang, LanguageSwitch } from "@/components/LanguageToggle";
 import { getSiteContent } from "@/lib/site-content";
 import { siteConfig } from "@/lib/site";
 
 const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/productos", label: "Productos" },
-  { href: "/quienes-somos", label: "Quienes Somos" },
-  { href: "/contacto", label: "Contacto" },
-  { href: siteConfig.adminPath, label: "Administrador" }
+  { href: "/", label: "Inicio", labelEn: "Home" },
+  { href: "/productos", label: "Productos", labelEn: "Products" },
+  { href: "/quienes-somos", label: "Quienes Somos", labelEn: "About" },
+  { href: "/contacto", label: "Contacto", labelEn: "Contact" },
+  { href: siteConfig.adminPath, label: "Administrador", labelEn: "Admin" }
 ];
 
 export async function Header() {
@@ -19,9 +20,14 @@ export async function Header() {
     <header className="site-header">
       <div className="top-strip">
         <div className="container top-strip__inner">
-          <span>{content.business.topStripText}</span>
+          <span>
+            <Lang
+              es={content.business.topStripText}
+              en="More than 30 years serving our customers."
+            />
+          </span>
           <a href={content.business.whatsappUrl} target="_blank" rel="noreferrer">
-            {content.business.topStripLinkLabel}
+            <Lang es={content.business.topStripLinkLabel} en="Shop here" />
           </a>
         </div>
       </div>
@@ -40,19 +46,22 @@ export async function Header() {
         <nav className="main-nav" aria-label="Principal">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}>
-              {link.label}
+              <Lang es={link.label} en={link.labelEn} />
             </Link>
           ))}
         </nav>
 
-        <a
-          className="button button--primary"
-          href={content.business.whatsappUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {content.business.headerButtonLabel}
-        </a>
+        <div className="header-actions">
+          <LanguageSwitch />
+          <a
+            className="button button--primary"
+            href={content.business.whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {content.business.headerButtonLabel}
+          </a>
+        </div>
       </div>
     </header>
   );
