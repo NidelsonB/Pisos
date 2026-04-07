@@ -6,6 +6,7 @@ import { getSiteContent, saveSiteContent } from "@/lib/site-content";
 import { SiteContent } from "@/lib/types";
 
 export const runtime = "nodejs";
+export const dynamic = "force-static";
 
 function revalidateContentRoutes() {
   revalidatePath("/");

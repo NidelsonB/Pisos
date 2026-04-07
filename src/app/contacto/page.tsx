@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { Lang } from "@/components/LanguageToggle";
+import { withBasePath } from "@/lib/paths";
 import { getSiteContent } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default async function ContactPage() {
     <main>
       <section className="page-hero">
         <Image
-          src={content.contact.heroImage}
+          src={withBasePath(content.contact.heroImage)}
           alt="Contacto Pisos Las Delicias"
           fill
           sizes="100vw"

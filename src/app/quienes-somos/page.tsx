@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Lang } from "@/components/LanguageToggle";
+import { withBasePath } from "@/lib/paths";
 import { getSiteContent } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default async function AboutPage() {
     <main>
       <section className="page-hero">
         <Image
-          src={content.about.heroImage}
+          src={withBasePath(content.about.heroImage)}
           alt="Quienes somos Pisos Las Delicias"
           fill
           sizes="100vw"
@@ -42,7 +43,7 @@ export default async function AboutPage() {
       <section className="container story-band page-shell">
         <div className="story-band__media story-band__media--tall">
           <Image
-            src={content.about.storyImage}
+            src={withBasePath(content.about.storyImage)}
             alt="Showroom y productos de Pisos Las Delicias"
             fill
             sizes="(max-width: 980px) 100vw, 35vw"

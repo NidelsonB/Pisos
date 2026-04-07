@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Lang } from "@/components/LanguageToggle";
+import { withBasePath } from "@/lib/paths";
 import { Product } from "@/lib/types";
 
 type ProductCardProps = {
@@ -12,7 +13,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <article className="product-card">
       <div className="product-card__image">
-        <Image src={product.image} alt={product.name} fill sizes="(max-width: 768px) 100vw, 33vw" />
+        <Image src={withBasePath(product.image)} alt={product.name} fill sizes="(max-width: 768px) 100vw, 33vw" />
       </div>
 
       <div className="product-card__content">

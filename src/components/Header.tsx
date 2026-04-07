@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Lang, LanguageSwitch } from "@/components/LanguageToggle";
 import { getSiteContent } from "@/lib/site-content";
+import { withBasePath } from "@/lib/paths";
 import { siteConfig } from "@/lib/site";
 
 const navLinks = [
@@ -35,7 +36,7 @@ export async function Header() {
       <div className="container header-shell">
         <Link href="/" className="brand-mark" aria-label={siteConfig.name}>
           <Image
-            src="/uploads/2022/11/logo-pisos-horizontal-small-2.png"
+            src={withBasePath("/uploads/2022/11/logo-pisos-horizontal-small-2.png")}
             alt={siteConfig.name}
             width={292}
             height={104}

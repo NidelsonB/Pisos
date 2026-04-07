@@ -1,16 +1,11 @@
-import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
-type CatalogPageProps = {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-};
+import { CatalogRedirectClient } from "@/app/catalogo/CatalogRedirectClient";
 
-export default async function CatalogRedirectPage({ searchParams }: CatalogPageProps) {
-  const params = (await searchParams) ?? {};
-  const selectedCategory = typeof params.categoria === "string" ? params.categoria : "";
-
-  if (selectedCategory) {
-    redirect(`/productos?categoria=${encodeURIComponent(selectedCategory)}`);
-  }
-
-  redirect("/productos");
+export default function CatalogRedirectPage() {
+  return (
+    <Suspense fallback={null}>
+      <CatalogRedirectClient />
+    </Suspense>
+  );
 }

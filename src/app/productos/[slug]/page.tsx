@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getProductBySlug, getProducts } from "@/lib/products";
+import { withBasePath } from "@/lib/paths";
 import { siteConfig } from "@/lib/site";
 
 type ProductPageProps = {
@@ -82,7 +83,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       />
 
       <div className="product-page__media">
-        <Image src={product.image} alt={product.name} fill sizes="(max-width: 900px) 100vw, 50vw" />
+        <Image src={withBasePath(product.image)} alt={product.name} fill sizes="(max-width: 900px) 100vw, 50vw" />
       </div>
 
       <div className="product-page__content">

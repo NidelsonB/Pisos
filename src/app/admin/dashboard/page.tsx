@@ -1,11 +1,26 @@
 import { redirect } from "next/navigation";
 
 import { AdminDashboardClient } from "@/app/admin/dashboard/AdminDashboardClient";
-import { isAdminAuthenticated } from "@/lib/auth";
+import { isAdminAuthenticated, isGitHubPagesBuild } from "@/lib/auth";
 import { getProducts } from "@/lib/products";
 import { getSiteContent } from "@/lib/site-content";
 
 export default async function AdminDashboardPage() {
+  if (isGitHubPagesBuild()) {
+    return (
+      <main className="container page-shell">
+        <section className="page-heading">
+          <p className="eyebrow">Panel administrador</p>
+          <h1>Panel no disponible en GitHub Pages.</h1>
+          <p>
+            Este despliegue es estatico. Para editar productos, precios e imagenes, usa un
+            despliegue Next.js con servidor Node.
+          </p>
+        </section>
+      </main>
+    );
+  }
+
   const authenticated = await isAdminAuthenticated();
 
   if (!authenticated) {

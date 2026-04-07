@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { useLanguage } from "@/components/LanguageToggle";
+import { withBasePath } from "@/lib/paths";
 import { EditableLinkCard } from "@/lib/types";
 
 type HomeHeroSliderProps = {
@@ -81,7 +82,7 @@ export function HomeHeroSlider({ slides }: HomeHeroSliderProps) {
           >
             <div className="hero-slide__image">
               <Image
-                src={slide.image}
+                src={withBasePath(slide.image)}
                 alt={copy.title}
                 fill
                 priority={index === 0}

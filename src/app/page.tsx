@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { HomeHeroSlider } from "@/components/HomeHeroSlider";
 import { Lang } from "@/components/LanguageToggle";
 import { ProductCard } from "@/components/ProductCard";
+import { withBasePath } from "@/lib/paths";
 import { getFeaturedProducts } from "@/lib/products";
 import { getSiteContent } from "@/lib/site-content";
 import { siteConfig } from "@/lib/site";
@@ -138,7 +139,7 @@ export default async function Home() {
             return (
               <Link key={item.id} href={item.href} className="category-card">
                 <div className="category-card__image">
-                  <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 30vw" />
+                  <Image src={withBasePath(item.image)} alt={item.title} fill sizes="(max-width: 768px) 100vw, 30vw" />
                 </div>
                 <div className="category-card__content">
                   <p>
@@ -283,7 +284,7 @@ export default async function Home() {
           {content.home.storyGalleryImages.map((image, index) => (
             <div key={image} className={`story-gallery__item story-gallery__item--${index + 1}`}>
               <Image
-                src={image}
+                src={withBasePath(image)}
                 alt={`Galeria Pisos Las Delicias ${index + 1}`}
                 fill
                 sizes="(max-width: 980px) 100vw, 26vw"

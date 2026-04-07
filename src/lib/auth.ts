@@ -4,6 +4,10 @@ import { siteConfig } from "@/lib/site";
 
 export const ADMIN_COOKIE_NAME = "pisos_admin_session";
 
+export function isGitHubPagesBuild() {
+  return process.env.GITHUB_PAGES === "true";
+}
+
 export function getAdminCredentials() {
   return {
     username: process.env.ADMIN_USERNAME ?? siteConfig.defaultAdminUser,
@@ -13,6 +17,10 @@ export function getAdminCredentials() {
 }
 
 export async function isAdminAuthenticated() {
+  if (isGitHubPagesBuild()) {
+    return false;
+  }
+
   const store = await cookies();
   const token = store.get(ADMIN_COOKIE_NAME)?.value;
 
