@@ -6,17 +6,22 @@ import { getProducts } from "@/lib/products";
 import { getSiteContent } from "@/lib/site-content";
 
 export default async function AdminDashboardPage() {
+  const [products, siteContent] = await Promise.all([getProducts(), getSiteContent()]);
+
   if (isGitHubPagesBuild()) {
     return (
       <main className="container page-shell">
         <section className="page-heading">
           <p className="eyebrow">Panel administrador</p>
-          <h1>Panel no disponible en GitHub Pages.</h1>
+          <h1>Editor local del sitio en GitHub Pages.</h1>
           <p>
-            Este despliegue es estatico. Para editar productos, precios e imagenes, usa un
-            despliegue Next.js con servidor Node.
+            GitHub Pages no ejecuta servidor, por eso los cambios se guardan solo en este
+            navegador. Para publicar cambios para todos, hay que actualizar los archivos del
+            repositorio o usar un despliegue con servidor.
           </p>
         </section>
+
+        <AdminDashboardClient initialProducts={products} initialContent={siteContent} staticMode />
       </main>
     );
   }
@@ -26,8 +31,6 @@ export default async function AdminDashboardPage() {
   if (!authenticated) {
     redirect("/admin");
   }
-
-  const [products, siteContent] = await Promise.all([getProducts(), getSiteContent()]);
 
   return (
     <main className="container page-shell">

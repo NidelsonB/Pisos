@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { isAdminAuthenticated, isGitHubPagesBuild } from "@/lib/auth";
@@ -9,12 +10,15 @@ export default async function AdminLoginPage() {
       <main className="admin-auth">
         <section className="admin-auth__card">
           <p className="eyebrow">Administrador web</p>
-          <h1>Panel no disponible en GitHub Pages</h1>
+          <h1>Administrador en GitHub Pages</h1>
           <p>
-            GitHub Pages solo sirve archivos estaticos. El panel administrador necesita cookies,
-            formularios POST y rutas API, por lo que sigue disponible en un despliegue Next.js con
-            servidor Node.
+            Esta version corre en GitHub Pages, asi que el panel funciona como editor local en el
+            navegador. Puedes revisar y preparar cambios, pero para publicarlos globalmente se
+            necesita un servidor o actualizar los archivos del repositorio.
           </p>
+          <Link className="button button--primary" href="/admin/dashboard">
+            Abrir administrador
+          </Link>
         </section>
       </main>
     );

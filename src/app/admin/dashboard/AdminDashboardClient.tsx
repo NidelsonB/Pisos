@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import { Product, SiteContent } from "@/lib/types";
 
 type AdminDashboardClientProps = {
   initialProducts: Product[];
   initialContent: SiteContent;
+  staticMode?: boolean;
 };
 
 type ProductFormState = {
@@ -55,9 +56,39 @@ function toPrettyJson(value: unknown) {
   return JSON.stringify(value, null, 2);
 }
 
+function normalizeSlug(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+function normalizeKeywords(value: string[] | string) {
+  if (Array.isArray(value)) {
+    return value.map((item) => item.trim()).filter(Boolean);
+  }
+
+  return value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function readFileAsDataUrl(file: File) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
 export function AdminDashboardClient({
   initialProducts,
-  initialContent
+  initialContent,
+  staticMode = false
 }: AdminDashboardClientProps) {
   const [products, setProducts] = useState(initialProducts);
   const [content, setContent] = useState(initialContent);
@@ -76,6 +107,38 @@ export function AdminDashboardClient({
 
   const totalInventoryValue = products.reduce((sum, product) => sum + product.price * product.stock, 0);
 
+  useEffect(() => {
+    if (!staticMode) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      const savedProducts = window.localStorage.getItem("pisos-admin-products");
+      const savedContent = window.localStorage.getItem("pisos-admin-content");
+
+      try {
+        if (savedProducts) {
+          setProducts(JSON.parse(savedProducts) as Product[]);
+        }
+
+        if (savedContent) {
+          const nextContent = JSON.parse(savedContent) as SiteContent;
+          setContent(nextContent);
+          setHeroPromosJson(toPrettyJson(nextContent.home.heroPromos));
+          setCategoryCardsJson(toPrettyJson(nextContent.home.categoryCards));
+          setStoryGalleryJson(toPrettyJson(nextContent.home.storyGalleryImages));
+          setAboutValuesJson(toPrettyJson(nextContent.about.values));
+        }
+      } catch {
+        window.localStorage.removeItem("pisos-admin-products");
+        window.localStorage.removeItem("pisos-admin-content");
+        setMessage("Se reinicio la copia local porque tenia datos invalidos.");
+      }
+    }, 0);
+
+    return () => window.clearTimeout(timeout);
+  }, [staticMode]);
+
   function parseJsonField<T>(value: string, fieldName: string) {
     try {
       return JSON.parse(value) as T;
@@ -85,6 +148,10 @@ export function AdminDashboardClient({
   }
 
   async function uploadFile(file: File) {
+    if (staticMode) {
+      return { url: await readFileAsDataUrl(file) };
+    }
+
     const payload = new FormData();
     payload.append("file", file);
 
@@ -206,6 +273,13 @@ export function AdminDashboardClient({
           return;
         }
 
+        if (staticMode) {
+          setContent(nextContent);
+          window.localStorage.setItem("pisos-admin-content", JSON.stringify(nextContent));
+          setMessage("Contenido guardado en este navegador. En GitHub Pages no se publica para otros visitantes.");
+          return;
+        }
+
         const response = await fetch("/api/admin/content", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -234,6 +308,29 @@ export function AdminDashboardClient({
           .map((item) => item.trim())
           .filter(Boolean);
 
+        if (staticMode) {
+          const product: Product = {
+            ...productForm,
+            id: productForm.id || crypto.randomUUID(),
+            slug: normalizeSlug(productForm.name),
+            gallery,
+            keywords: normalizeKeywords(productForm.keywords),
+            price: Number(productForm.price),
+            originalPrice: Number(productForm.originalPrice),
+            stock: Number(productForm.stock),
+            updatedAt: new Date().toISOString()
+          };
+          const nextProducts = productForm.id
+            ? products.map((item) => (item.id === product.id ? product : item))
+            : [...products, product];
+
+          setProducts(nextProducts);
+          window.localStorage.setItem("pisos-admin-products", JSON.stringify(nextProducts));
+          setProductForm({ ...emptyProduct });
+          setMessage("Producto guardado en este navegador. En GitHub Pages no se publica para otros visitantes.");
+          return;
+        }
+
         const response = await fetch("/api/admin/products", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -261,6 +358,14 @@ export function AdminDashboardClient({
 
   function handleDelete(id: string) {
     setMessage("");
+
+    if (staticMode) {
+      const nextProducts = products.filter((product) => product.id !== id);
+      setProducts(nextProducts);
+      window.localStorage.setItem("pisos-admin-products", JSON.stringify(nextProducts));
+      setMessage("Producto eliminado de la copia local de este navegador.");
+      return;
+    }
 
     startTransition(() => {
       void (async () => {
@@ -292,11 +397,17 @@ export function AdminDashboardClient({
           <span>Inventario total</span>
           <strong>${totalInventoryValue.toLocaleString("en-US", { maximumFractionDigits: 2 })}</strong>
         </div>
-        <form action="/api/admin/logout" method="post">
-          <button className="button button--ghost" type="submit">
-            Cerrar sesion
-          </button>
-        </form>
+        {staticMode ? (
+          <div className="admin-note">
+            Modo GitHub Pages: cambios locales del navegador.
+          </div>
+        ) : (
+          <form action="/api/admin/logout" method="post">
+            <button className="button button--ghost" type="submit">
+              Cerrar sesion
+            </button>
+          </form>
+        )}
       </section>
 
       <section className="admin-tabs">
