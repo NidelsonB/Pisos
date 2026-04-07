@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/dashboard
+Disallow: /api/
+
+Sitemap: https://www.pisoslasdelicias.com/sitemap.xml

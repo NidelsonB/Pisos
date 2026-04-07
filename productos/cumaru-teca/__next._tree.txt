@@ -1,0 +1,4 @@
+:HL["/Pisos/_next/static/chunks/0yx2q6gjndouq.css","style"]
+:HL["/Pisos/_next/static/media/ce62453a442c7f35-s.p.0333ktddfbsxy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/Pisos/_next/static/media/e8f2fbee2754df70-s.p.0fzkl03jw-sdz.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"productos","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"cumaru-teca","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"PTGGZ3W4xxOzPrM44u_z8"}
